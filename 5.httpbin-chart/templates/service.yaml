@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "http-bin.fullname" . }}
+  name: {{ include "5.httpbin-chart.fullname" . }}
   labels:
-    {{- include "http-bin.labels" . | nindent 4 }}
+    {{- include "5.httpbin-chart.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "http-bin.selectorLabels" . | nindent 4 }}
+    {{- include "5.httpbin-chart.selectorLabels" . | nindent 4 }}

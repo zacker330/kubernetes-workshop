@@ -13,6 +13,7 @@
   # 将pod代理到本地
   kubectl port-forward httpbin 8080:80
   ```
+
 1. 认识service、Endpoint
   ```bash
   # 创建service
@@ -27,6 +28,7 @@
   kubectl delete -f 1.httpbin-pod.yaml
   kubectl delete -f 2.httpbin-pod-service.yaml
   ```
+
 1. 认识Deployment
   可以理解为Pod的控制器的一种类型
   ```bash
@@ -56,12 +58,12 @@
   3. 我们是如何使用chart的
   4. 执行chart
     ```bash
-    helm install httpbin ./5.http-bin-chart
+    helm install httpbin ./5.httpbin-chart
     #查看chart生成的manifest
     kubectl get pod 
     kubectl get pod httpbin-http-bin-5976bf8c69-pxsrh -o yaml
     # 修改values中的resource配置，了解resource配置，再次执行部署
-    helm upgrade --install httpbin ./5.http-bin-chart
+    helm upgrade --install httpbin ./5.httpbin-chart
 
     ```
   

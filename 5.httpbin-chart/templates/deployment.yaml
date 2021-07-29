@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "http-bin.fullname" . }}
+  name: {{ include "5.httpbin-chart.fullname" . }}
   labels:
-    {{- include "http-bin.labels" . | nindent 4 }}
+    {{- include "5.httpbin-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "http-bin.selectorLabels" . | nindent 6 }}
+      {{- include "5.httpbin-chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "http-bin.selectorLabels" . | nindent 8 }}
+        {{- include "5.httpbin-chart.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "http-bin.serviceAccountName" . }}
+      serviceAccountName: {{ include "5.httpbin-chart.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
