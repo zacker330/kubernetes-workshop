@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin-service
+spec:
+  # 还有 LoadBalancer,NodePort,ExternalName类型
+  type: ClusterIP
+  selector:
+    app: httpbin
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+
